@@ -67,6 +67,4 @@ Calibrated models are saved to `bci_model.pkl`; raw calibration EEG to `raw_sess
 | `ADAPT_THRESHOLD` | 0.05 | Riemannian distance that triggers centroid adaptation |
 | `ADAPT_CONFIDENCE` | 0.70 | Minimum confidence to buffer a sample for adaptation |
 
-## License
 
-Add a license of your choice (e.g. MIT) before making this public.
