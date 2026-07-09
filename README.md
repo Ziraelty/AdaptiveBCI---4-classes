@@ -12,7 +12,7 @@ Mentalab (LSL) -> rASR -> covariance(C_t)
     -> cursor
 ```
 
-**Centroid adaptation** (Smooth Geodesic, Zanini 2018):
+**Centroid adaptation** :
 - `confidence > ADAPT_CONFIDENCE` → buffer sample (size `BUFFER_SIZE`)
 - `delta(mu_buf, mu_k) > ADAPT_THRESHOLD` → `mu_k <- Exp_mu(alpha * Log_mu(mu_buf))`, `alpha=ALPHA_CENTROID`
 
