@@ -67,4 +67,21 @@ Calibrated models are saved to `bci_model.pkl`; raw calibration EEG to `raw_sess
 | `ADAPT_THRESHOLD` | 0.05 | Riemannian distance that triggers centroid adaptation |
 | `ADAPT_CONFIDENCE` | 0.70 | Minimum confidence to buffer a sample for adaptation |
 
+## Known issues (Oct 2026)
+All the results were taken from a session in June. Since then, my knowledge grew and looking back I have found the following issues:
+- `asr_stream` writes each cleaned window 0.5 s later than its input, so the
+  last 0.5 s of each 2 s window is dropped and the first 0.5 s is counted
+  twice. This affects calibration and online use equally, so the pipeline
+  stays consistent but loses data. Fix planned.
+- Calibration records classes in blocks; a randomized trial order would
+  avoid confounding class with time.
+- `calibrate` estimates R from task trials, while `recalibrate_r` uses rest
+  data; both should use the same source.
+- "RPA" here means Riemannian re-centering only (Zanini et al., 2018),
+  not full RPA (Rodrigues et al., 2019).
+- `--mode test` currently requires pyautogui.
+- Band-pass filtering is done in the Mentalab LSL streamer ([band] Hz),
+  not in this code.
+- The cued evaluation script used for the 76% session is [not yet included /
+  in `filename`].
 
